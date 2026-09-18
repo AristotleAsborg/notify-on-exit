@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "notify-on-exit"
+version = "0.1.0"
+description = "Run a long command and push a DingTalk message when it exits."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "repo-autopilot" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "ruff>=0.5"]
+
+[project.scripts]
+notify-on-exit = "notify_on_exit.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
